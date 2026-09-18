@@ -6,7 +6,7 @@
 - [AGENTS + commit conventions](project/agents.md) — AGENTS.md markers + Conventional Commits (informal) + CODEOWNERS + Co-authored-by footer
 - [Git workflow — staging-first](project/git-workflow.md) — setup 2026-07-16: PRs target staging, main is human-promoted, never merge direct to main
 - [apps/app architecture](apps/app.md) — authenticated app (login/signup/dashboard/settings), separate deploy from web
-- [apps/web architecture](apps/web.md) — public static site (marketing/blog/changelog/legal), NO auth, links to /login /signup live in apps/app
+- [apps/web architecture](apps/web.md) — public static site (marketing/blog/legal), NO auth, links to /login /signup live in apps/app
 - [apps/docs architecture](apps/docs.md) — Fumadocs-based docs site (separate deploy, target of /docs links from web/app)
 - [Single-tenant only](project/single-tenant.md) — NO organization plugin/schema/useActiveOrganization/#9710 workaround in this repo (re-confirmed 2026-07-28); docs/guides/better-auth/{index,org,hooks,client}.md are stale on this
 - [packages/ui audit](packages/ui-audit.md) — audit findings corrected after web verification (4 wrong, 4 right)

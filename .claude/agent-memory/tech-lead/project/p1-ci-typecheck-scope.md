@@ -11,7 +11,7 @@ Verified by audit on 2026-07-28 (`.github/workflows/ci.yml`):
 
 - The typecheck job installs with `pnpm install --frozen-lockfile` (like the other jobs — the original P1 claim "skips --frozen-lockfile" was wrong).
 - The typecheck step itself runs `pnpm turbo typecheck --force` with **no `--filter`** — every workspace with a `typecheck` script is covered.
-- The only `--filter=web --force` call in the file is a **pre-build step** (`pnpm turbo build --filter=web --force`) that runs before typecheck. The likely reason: `apps/web` uses `content-collections` for its MDX blog/changelog, and the generated types must exist before `tsc --noEmit`. Not a coverage defect.
+- The only `--filter=web --force` call in the file is a **pre-build step** (`pnpm turbo build --filter=web --force`) that runs before typecheck. The likely reason: `apps/web` uses `content-collections` for its MDX blog, and the generated types must exist before `tsc --noEmit`. Not a coverage defect.
 
 The original concern (lockfile drift silently absorbed, three-of-twelve workspaces guarded) is **not** reproduced.
 

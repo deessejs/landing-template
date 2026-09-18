@@ -1,4 +1,4 @@
-import type { Post, Release } from "./types"
+import type { Post } from "./types"
 
 function escapeXml(s: string): string {
   return s
@@ -63,25 +63,6 @@ export function buildBlogFeed(posts: Post[], siteOrigin: string): string {
     "Blog",
     "Articles and updates.",
     `${siteOrigin}/blog`,
-    buildItems(items),
-  )
-}
-
-export function buildChangelogFeed(
-  releases: Release[],
-  siteOrigin: string,
-): string {
-  const items = releases.map((release) => ({
-    title: `${release.version} — ${release.title}`,
-    link: `${siteOrigin}${release.url}`,
-    description: release.description,
-    pubDate: rfc822(release.date),
-    guid: `${siteOrigin}${release.url}`,
-  }))
-  return wrapChannel(
-    "Changelog",
-    "Public release notes.",
-    `${siteOrigin}/changelog`,
     buildItems(items),
   )
 }

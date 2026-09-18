@@ -107,7 +107,7 @@ export function SearchDialog() {
           <Input
             ref={inputRef}
             type="text"
-            placeholder="Search articles and releases..."
+            placeholder="Search articles..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={handleKeyDown}
@@ -147,16 +147,6 @@ export function SearchDialog() {
                     )}
                   >
                     <span className="flex items-center gap-2">
-                      <span
-                        className={cn(
-                          "rounded px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide",
-                          result.item.type === "post"
-                            ? "bg-primary/10 text-primary"
-                            : "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400",
-                        )}
-                      >
-                        {result.item.type}
-                      </span>
                       <span className="text-sm font-medium">{result.item.title}</span>
                     </span>
                     <span className="line-clamp-1 text-xs text-muted-foreground">
@@ -171,7 +161,7 @@ export function SearchDialog() {
 
         {!query.trim() && (
           <div className="px-4 py-6 text-center text-sm text-muted-foreground">
-            Start typing to search posts and releases
+            Start typing to search posts
           </div>
         )}
       </div>

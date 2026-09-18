@@ -9,7 +9,7 @@ metadata:
 
 **Role**: authenticated app only. Login, signup, dashboard, settings. Separate Next.js deploy from [[web-architecture]].
 
-- Public marketing / blog / changelog / legal pages live in `apps/web`, NOT here.
+- Public marketing / blog / legal pages live in `apps/web`, NOT here.
 - When `apps/web` links to `/login` or `/signup`, those routes live in this app.
 - Both apps share `packages/ui` for components and `packages/ui/lib/config` for `APP_CONFIG`.
 

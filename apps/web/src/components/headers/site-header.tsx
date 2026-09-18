@@ -8,7 +8,6 @@ import { APP_NAME } from "@workspace/ui/lib/config"
 
 const NAV_LINKS = [
   { href: "/blog", label: "Blog" },
-  { href: "/changelog", label: "Changelog" },
 ]
 
 function NavLink({ href, label }: { href: string; label: string }) {
@@ -57,11 +56,6 @@ function MobileNav() {
             </Link>
           ))}
         </nav>
-        <div className="mt-auto flex flex-col gap-2">
-          <Button asChild className="w-full">
-            <Link href="/login">Login</Link>
-          </Button>
-        </div>
       </SheetContent>
     </Sheet>
   )
@@ -77,12 +71,6 @@ export function SiteHeader() {
             {APP_NAME}
           </Link>
           <DesktopNav />
-        </div>
-
-        <div className="hidden items-center gap-2 sm:flex">
-          <Button asChild>
-            <Link href="/login">Login</Link>
-          </Button>
         </div>
       </div>
     </header>

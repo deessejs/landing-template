@@ -37,7 +37,7 @@ This block appears to be auto-injected by some tooling — DO NOT edit it manual
 
 **Examples** (from `git log`):
 - `fix(vercel): create .vercel/output dir before copying Next.js build`
-- `feat(web): add blog, changelog, cookie consent, and shared components to apps/web`
+- `feat(web): add blog, cookie consent, and shared components to apps/web`
 - `docs(tech-lead): add Vercel deployment pattern memory`
 - `refactor(agents): flatten agent directory to fix Vercel deployment`
 
