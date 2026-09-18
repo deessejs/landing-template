@@ -12,6 +12,6 @@ metadata:
 - Stack: **Fumadocs** (`fumadocs-core`, `fumadocs-mdx`, `fumadocs-ui` v16) on Next.js + Tailwind v4.
 - MDX content in `content/docs/`.
 - Package name: `@workspace/docs`.
-- Linked from `apps/web` header/footer (`NAV_LINKS`, footer) and from blog/changelog MDX — those are intentional cross-app nav, not broken links.
+- Linked from `apps/web` header/footer (`NAV_LINKS`, footer) and from blog MDX — those are intentional cross-app nav, not broken links.
 
 Related: [[web-architecture]] (source of /docs links), [[app-architecture]] (also links to /docs).

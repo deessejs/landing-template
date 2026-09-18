@@ -1,13 +1,13 @@
 ---
 name: web-architecture
-description: apps/web — public static site (marketing/blog/changelog/legal), NO auth, separate Next.js deploy from apps/app
+description: apps/web — public static site (marketing/blog/legal), NO auth, separate Next.js deploy from apps/app
 metadata:
   type: project
 ---
 
 # apps/web — Public static site
 
-**Role**: public-facing, anonymous, static. Marketing, blog, changelog, legal pages. Separate Next.js deploy from [[app-architecture]].
+**Role**: public-facing, anonymous, static. Marketing, blog, legal pages. Separate Next.js deploy from [[app-architecture]].
 
 - No auth, no `/login`, no `/signup`, no dashboard here.
 - When the header/footer links to `/login` or `/signup`, those routes live in `apps/app` — link is intentional cross-app navigation.
@@ -37,8 +37,7 @@ apps/web/
 │   └── stores/        # Zustand stores (NO lib/stores)
 ├── content/           # MDX content
 │   ├── authors/
-│   ├── posts/
-│   └── releases/
+│   └── posts/
 └── content-collections.ts
 ```
 
@@ -67,11 +66,11 @@ Pas de provider. Chaque composant appelle `useCookieConsentStore()` directement.
 
 **Ne pas utiliser `useSyncExternalStore`** — break le prerendering Next.js.
 
-## Blog + Changelog
+## Blog
 
-- `content-collections.ts` génère les types `allPosts`, `allAuthors`, `allReleases`
-- Collections : `posts`, `authors`, `releases`
+- `content-collections.ts` génère les types `allPosts`, `allAuthors`
+- Collections : `posts`, `authors`
 - Multi-auteur, tags libres, drafts, reading time, MDX+Shiki
-- Routes : blog (liste, slug, tag, author), changelog (index, slug)
-- SEO : OG images, RSS feeds, sitemap, JSON-LD
-- Search : Fuse.js dialog accessible via `⌘K`/`Ctrl+K` ou bouton sur les pages blog/changelog
+- Routes : blog (liste, slug, tag, author)
+- SEO : OG images, RSS feed, sitemap, JSON-LD
+- Search : Fuse.js dialog accessible via `⌘K`/`Ctrl+K` ou bouton sur les pages blog
