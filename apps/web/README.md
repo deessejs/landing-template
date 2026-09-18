@@ -1,10 +1,10 @@
 # `apps/web`
 
-Public marketing and landing page for the SaaS template.
+Public landing page for landing-template.
 
 ## Purpose
 
-`apps/web` is the public-facing entry point — what anonymous visitors see before they sign up. It includes the landing page, blog, changelog, cookie policy, privacy, and terms pages.
+`apps/web` is the public-facing entry point — what anonymous visitors see. It includes the landing page, blog, changelog, cookie policy, privacy, and terms pages.
 
 ## Stack
 
@@ -22,7 +22,7 @@ Public marketing and landing page for the SaaS template.
 No additional env vars required. Shared app config is read from `NEXT_PUBLIC_APP_*` variables:
 
 ```env
-NEXT_PUBLIC_APP_NAME="SaaS Template"
+NEXT_PUBLIC_APP_NAME="landing-template"
 NEXT_PUBLIC_APP_DESCRIPTION="..."
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 ```
@@ -122,12 +122,9 @@ Release content with Keep-a-Changelog format.
 
 ## Relationship to other apps
 
-This app is one of three in the monorepo, each deployed independently:
+This app is one of two in the monorepo, each deployed independently:
 
-- **`apps/web`** (this app) — public, anonymous. Marketing, blog, changelog, legal pages.
-- **`apps/app`** — authenticated app. `/login`, `/signup`, dashboard, settings. Has its own `(protected)` / `(unprotected)` route groups for auth.
-- **`apps/docs`** — Fumadocs-based documentation site, served at `/docs`.
+- **`apps/web`** (this app) — public, anonymous. Landing page, blog, changelog, legal pages.
+- **`apps/app`** — authenticated admin interface. `/login`, dashboard, settings. Has its own `(protected)` / `(unprotected)` route groups for auth. Sign-up is closed; admins are provisioned via `pnpm create-admin`.
 
-Links to `/login`, `/signup` in the header point to `apps/app`. Links to `/docs` point to `apps/docs`. Both are intentional cross-app navigation, not broken links.
-
-All three share `@workspace/ui` for components and styling, and `@workspace/ui/lib/config` for `APP_CONFIG`.
+The `/login` link in the header points to `apps/app`. Both share `@workspace/ui` for components and styling, and `@workspace/ui/lib/config` for `APP_CONFIG`.

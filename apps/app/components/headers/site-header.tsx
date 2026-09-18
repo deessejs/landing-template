@@ -13,11 +13,8 @@ export function SiteHeader() {
         </Link>
 
         <nav className="flex items-center gap-2">
-          <Button variant="outline" asChild>
-            <Link href="/login">Login</Link>
-          </Button>
           <Button asChild>
-            <Link href="/signup">Sign up</Link>
+            <Link href="/login">Login</Link>
           </Button>
         </nav>
       </div>

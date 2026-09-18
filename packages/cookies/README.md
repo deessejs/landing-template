@@ -1,6 +1,6 @@
 # `@workspace/cookies`
 
-Cookie consent system for the SaaS template.
+Cookie consent system for landing-template.
 
 ## What's included
 

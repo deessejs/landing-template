@@ -96,10 +96,7 @@ export function LoginForm() {
 			<OAuthButtons />
 
 			<p className="text-center text-sm text-muted-foreground">
-				Don&apos;t have an account?{" "}
-				<Link href="/signup" className="text-primary underline-offset-4 hover:underline">
-					Sign up
-				</Link>
+				Need access? Contact your administrator.
 			</p>
 		</div>
 	)

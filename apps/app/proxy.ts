@@ -6,7 +6,6 @@ import type { Session, User } from "better-auth"
 const PROTECTED_PREFIXES = ["/home", "/settings"]
 const AUTH_PREFIXES = [
   "/login",
-  "/signup",
   "/forgot-password",
   "/reset-password",
   "/verify-email",
@@ -18,7 +17,6 @@ export const config = {
     "/home/:path*",
     "/settings/:path*",
     "/login",
-    "/signup",
     "/forgot-password",
     "/reset-password",
     "/verify-email",

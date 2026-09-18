@@ -12,7 +12,7 @@ If you discover a security vulnerability, please report it responsibly.
 
 **Please DO NOT** create a public GitHub issue for security vulnerabilities.
 
-Instead, contact us directly at: [support@deessejs.com](mailto:support@deessejs.com)
+Instead, contact us directly at: [you@example.com](mailto:you@example.com)
 
 Include the following information in your report:
 - Type of issue (e.g., XSS, SQL injection, etc.)

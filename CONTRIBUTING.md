@@ -65,4 +65,4 @@ Update shared dependencies in `pnpm-workspace.yaml` under `catalog:`.
 
 ## Support
 
-For questions, open an issue or contact [support@deessejs.com](mailto:support@deessejs.com)
+For questions, open an issue or contact [you@example.com](mailto:you@example.com)
