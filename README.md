@@ -2,39 +2,34 @@
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="public/banner-ds.jpg">
     <source media="(prefers-color-scheme: light)" srcset="public/banner-ds.jpg">
-    <img src="public/banner-ds.jpg" alt="SaaS Template banner" width="900">
+    <img src="public/banner-ds.jpg" alt="landing-template banner" width="900">
   </picture>
 </p>
 
-<h1 align="center">SaaS Template</h1>
+<h1 align="center">landing-template</h1>
 
 <p align="center">
-  <strong>Production-ready single-tenant SaaS starter.</strong>
-  Next.js 16 · Better Auth · Drizzle · Tailwind v4 · Deploy in minutes.
+  <strong>Minimal Next.js 16 monorepo with a public landing page and a closed-beta admin interface.</strong>
+  Better Auth · Drizzle · Tailwind v4 · Deploy in minutes.
 </p>
 
 <p align="center">
-  <a href="https://github.com/deessejs/saas-template/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/deessejs/saas-template" alt="License">
+  <a href="./LICENSE">
+    <img src="https://img.shields.io/github/license/your-org/landing-template" alt="License">
   </a>
-  <a href="https://github.com/deessejs/saas-template/actions/workflows/ci.yml">
-    <img src="https://img.shields.io/github/actions/workflow/status/deessejs/saas-template/ci.yml?label=CI" alt="CI">
-  </a>
-  <a href="https://github.com/deessejs/saas-template/stargazers">
-    <img src="https://img.shields.io/github/stars/deessejs/saas-template?style=social" alt="Stars">
+  <a href="./.github/workflows/ci.yml">
+    <img src="https://img.shields.io/github/actions/workflow/status/your-org/landing-template/ci.yml?label=CI" alt="CI">
   </a>
 </p>
 
 <p align="center">
-  <a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdeessejs%2Fsaas-template">
+  <a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fyour-org%2Flanding-template">
     <img src="https://vercel.com/button" alt="Deploy with Vercel">
   </a>
-  <a href="https://github.com/deessejs/saas-template/codespaces/new">
+  <a href="https://github.com/codespaces/new?repo=your-org/landing-template">
     <img src="https://github.com/codespaces/badge.svg" alt="Open in GitHub Codespaces">
   </a>
 </p>
-
-> 👉 **Need workspaces / multi-tenant?** See [`deessejs/saas-template-multi-tenant`](https://github.com/deessejs/saas-template-multi-tenant) — same monorepo with the Better Auth Organization plugin wired in, for users who need per-tenant data isolation and invite-based memberships.
 
 ---
 
@@ -42,7 +37,7 @@
 
 | Layer | What you get | Why it matters |
 |---|---|---|
-| **Apps** | `apps/web` (marketing), `apps/app` (authenticated product), `apps/docs` (Fumadocs) | Three deployable surfaces, each with its own purpose. |
+| **Apps** | `apps/web` (landing page — the public offering), `apps/app` (authenticated admin) | Two deployable surfaces: one public, one gated. |
 | **Auth** | `packages/auth` ( Better Auth + Drizzle adapter, email verification, password reset | Real auth, not a demo. Production gating in `apps/app/proxy.ts`. |
 | **API** | `packages/api` ( Hono + oRPC, end-to-end typed routes | Type-safe RPC without GraphQL. |
 | **Database** | `packages/database` ( Drizzle ORM, Postgres, in-memory test runner (pg-mem) | Single source of truth for schema; tests run without a DB. |
@@ -52,16 +47,16 @@
 
 ## Why this template
 
-- **Modern, but boring where it matters.** Next.js 16, Tailwind v4, React 19, TypeScript 6. Chosen because they're the default for new SaaS projects in 2026.
+- **Modern, but boring where it matters.** Next.js 16, Tailwind v4, React 19, TypeScript 6. Chosen because they're the default for new web projects in 2026.
 - **Lockfile-clean pnpm catalogs.** All shared versions live in `pnpm-workspace.yaml` with `catalogMode: strict`. No drift between apps.
 - **Real auth flow.** Email verification is enforced in the proxy. No "demo" auth.
 - **Real database.** Postgres locally (Docker) or in the cloud. Schema is generated, not hand-written.
-- **Three apps, one repo.** Marketing, product, docs. Each deployable independently to Vercel.
+- **Two apps, one repo.** Public landing + authenticated admin. Each deployable independently to Vercel.
 
 ## Quick start
 
 > [!TIP]
-> Don't want to install anything locally? [Open in GitHub Codespaces](https://github.com/deessejs/saas-template/codespaces/new). PostgreSQL is pre-configured in the dev container.
+> Don't want to install anything locally? [Open in GitHub Codespaces](https://github.com/codespaces/new?repo=your-org/landing-template). PostgreSQL is pre-configured in the dev container.
 
 ### Prerequisites
 
@@ -73,8 +68,8 @@
 
 ```bash
 # 1. Clone
-git clone https://github.com/deessejs/saas-template.git
-cd saas-template
+git clone https://github.com/your-org/landing-template.git
+cd landing-template
 
 # 2. Install dependencies
 pnpm install
@@ -86,11 +81,16 @@ cp .env.example .env.local
 pnpm auth:generate
 pnpm db:push
 
-# 5. Start every app in dev mode
+# 5. Provision the first admin account
+pnpm create-admin --email you@example.com --password "your-strong-password"
+
+# 6. Start every app in dev mode
 pnpm dev
 ```
 
-Each app's default port is in its own `README.md` (under `apps/*/`). `apps/app` proxies trust `localhost:3000` and `localhost:3001` by default. See `packages/auth/src/auth.ts:13`.
+Each app's default port is in its own `README.md` (under `apps/*/`). `apps/app` proxies trust `localhost:3000` and `localhost:3001` by default. See `packages/auth/src/auth.ts`.
+
+> **Sign-up is closed.** There is no public registration flow on this template. Admin accounts are created out-of-band via `pnpm create-admin`. See `scripts/create-admin.mjs`.
 
 ## Available commands
 
@@ -106,6 +106,7 @@ Each app's default port is in its own `README.md` (under `apps/*/`). `apps/app` 
 | `pnpm db:push` | Sync schema directly (dev only. Never in prod) |
 | `pnpm db:studio` | Open Drizzle Studio in the browser |
 | `pnpm auth:generate` | Regenerate Better Auth schema in `packages/database/src/schema/auth.ts` |
+| `pnpm create-admin` | Provision a new admin account (sign-up is closed to the public) |
 | `pnpm env:check` | Validate that all required env vars are present |
 | `pnpm dedupe:check` | Detect duplicated dependencies |
 
@@ -130,9 +131,8 @@ Copy `.env.example` to `.env.local` to start; defaults work for local Docker Pos
 ```
 .
 ├── apps/
-│   ├── web/        # Next.js 16 (marketing site) (public, no auth)
-│   ├── app/        # Next.js 16 (authenticated product) (proxy.ts guard)
-│   └── docs/       # Next.js 16 (Fumadocs site)
+│   ├── web/        # Next.js 16 (landing page, public, no auth)
+│   └── app/        # Next.js 16 (admin interface, proxy.ts guard)
 ├── packages/
 │   ├── auth/       # Better Auth setup (single source of truth)
 │   ├── database/   # Drizzle ORM + schema (CLI-generated for auth tables)
@@ -153,7 +153,7 @@ Copy `.env.example` to `.env.local` to start; defaults work for local Docker Pos
 
 ### One-click
 
-Click the **Deploy with Vercel** button at the top. The monorepo is detected automatically; you will need to create three Vercel projects (one per app) and configure env vars per project.
+Click the **Deploy with Vercel** button at the top. The monorepo is detected automatically; you will need to create two Vercel projects (one per app) and configure env vars per project.
 
 ### Per-app mapping
 
@@ -161,11 +161,10 @@ Click the **Deploy with Vercel** button at the top. The monorepo is detected aut
 |---|---|
 | `apps/web` | `https://yourdomain.com` |
 | `apps/app` | `https://app.yourdomain.com` |
-| `apps/docs` | `https://docs.yourdomain.com` |
 
 ## Customization
 
-This template is **single-tenant by design**. The auth guides under `docs/guides/better-auth/` explain the lock-ins:
+This template is **single-tenant by design**. The lock-ins are:
 
 - No `organization(...)` plugin in `packages/auth/src/auth.ts`.
 - No `databaseHooks.session.create.before` for org auto-create.
@@ -180,6 +179,7 @@ If you need multi-tenant, start from Better Auth's `organizationPlugin` separate
 - **Catalogs, not manual pins.** All shared versions are centralized in `pnpm-workspace.yaml` with `catalogMode: strict`.
 - **Schema ownership.** `packages/database/src/schema/auth.ts` is owned by the Better Auth CLI. Never hand-edit.
 - **Single source of truth for auth config.** Everything lives in `packages/auth/src/auth.ts`; routes and components import from `@workspace/auth`.
+- **Closed sign-up.** `emailAndPassword.disableSignUp: true` is the default. Account provisioning happens via `pnpm create-admin` (see `scripts/create-admin.mjs`).
 
 ## Contributing
 
@@ -191,6 +191,6 @@ Open an issue to discuss larger changes. For typos, broken links, and small fixe
 
 ## Support
 
-- Issues: [github.com/deessejs/saas-template/issues](https://github.com/deessejs/saas-template/issues)
-- Discussions: [github.com/deessejs/saas-template/discussions](https://github.com/deessejs/saas-template/discussions)
-- Email: [support@deessejs.com](mailto:support@deessejs.com)
+- Issues: [github.com/your-org/landing-template/issues](https://github.com/your-org/landing-template/issues)
+- Discussions: [github.com/your-org/landing-template/discussions](https://github.com/your-org/landing-template/discussions)
+- Email: [you@example.com](mailto:you@example.com)

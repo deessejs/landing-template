@@ -11,7 +11,6 @@ export const APP_CONFIG = {
   links: {
     home: "/",
     login: "/login",
-    signup: "/signup",
     settings: "/settings",
   },
 } as const

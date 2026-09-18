@@ -37,6 +37,11 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
     requireEmailVerification: true,
+    // Sign-up is closed to the public. Admin accounts are provisioned via
+    // `scripts/create-admin.ts` (run locally or in CI). Better Auth disables
+    // the email/password sign-up endpoint when `disableSignUp` is true, which
+    // is what we want — there is no public registration form on this template.
+    disableSignUp: true,
     // Fire-and-forget for response latency (per Better Auth's timing-attack
     // guidance), but inspect the result asynchronously so failures are
     // observable. Do not surface to the user — forgot-password must keep
